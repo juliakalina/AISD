@@ -3,7 +3,6 @@
 
 #include <stdlib.h>
 #include <string.h>
-#include <assert.h>
 
 #define MIN_INFO_OFFSET
 
@@ -60,36 +59,25 @@ info_t _load_info(FILE* file, const long offset)
 	if (!file)
 		return res;
 
-	assert(!fseek(file, offset, SEEK_SET));
-	assert(1LLU == fread(&res.x, sizeof(float), 1, file));
-	assert(1LLU == fread(&res.y, sizeof(float), 1, file));
+	
 
 	size_t length = 0;
-	assert(1LLU == fread(&length, sizeof(size_t), 1, file));
 
 	res.msg = (char*)calloc(length + 1, sizeof(char));
 	if (!res.msg)
 		return res;
 
-	assert(length == fread(res.msg, sizeof(char), length, file));
+	
 
 	return res;
 }
 
 long _save_info(FILE* file, info_t info)
 {
-	fseek(file, 0L, SEEK_END);
+	fseek(file, 0, SEEK_END);
 	long offset = ftell(file);
-
-	assert(1LLU == fwrite(&info.x, sizeof(float), 1, file));
-	assert(1LLU == fwrite(&info.y, sizeof(float), 1, file));
-
 	size_t length = strlen(info.msg);
-	assert(1LLU == fwrite(&length, sizeof(size_t), 1, file));
-	assert(length == fwrite(info.msg, sizeof(char), length, file));
-
 	fflush(file);
-
 	InfoDelete(&info);
 
 	return offset;
