@@ -9,14 +9,14 @@ typedef struct Coordinates {
 } Coordinates;
 
 typedef struct DFS_search {
-	int color; //0 - white 1 - grey 2 - black
-	struct Vertex* prev; //для меток времени
+	int color; 
+	struct Vertex* prev; 
 } DFS_search;
 
 typedef struct Vertex {
 	char* name;
 	DFS_search for_dfs;
-	int min_way; // для dijkstra
+	int min_way; 
 	int visited;
 	Coordinates coords;
 	struct Vertex_list* vert_list;
