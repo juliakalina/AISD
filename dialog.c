@@ -4,8 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-#define _OPTS_NUM 5U
 #define BUFFER_LENGTH 128
 
 int dialog(const char* msgs[], int n) {
@@ -81,21 +79,6 @@ void _reorganise(key_space_t* ks)
 {
 	KSReorganise(ks);
 }
-#define _create_get_param(type, fmt)                     \
-	type _get_ ## type ## _param(const char* msg)        \
-	{                                                    \
-		printf("%s:\n> ", msg);                          \
-                                                         \
-		char dummy;                                      \
-		type x = 0;                                      \
-		scanf("%" fmt "%c", &x, &dummy);                 \
-                                                         \
-		return x;                                        \
-	}
-
-_create_get_param(float, "f")
-_create_get_param(int, "d")
-_create_get_param(unsigned, "u")
 
 void _print(key_space_t* ks)
 {
@@ -152,4 +135,3 @@ char* GetStr(const char* msg)
 	return str;
 }
 
-#undef _create_get_param
