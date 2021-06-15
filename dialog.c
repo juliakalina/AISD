@@ -75,11 +75,6 @@ void _remove(key_space_t* ks)
 		printf("Failed to remove item with " KEY_FMT " key " RELEASE_FMT " release\n", key, release);
 }
 
-void _reorganise(key_space_t* ks)
-{
-	KSReorganise(ks);
-}
-
 void _print(key_space_t* ks)
 {
 	KSPrint(ks);
