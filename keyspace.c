@@ -204,21 +204,6 @@ bool KSRemove(key_space_t* ks, key_t key, const release_t release)
 	return false;
 }
 
-void KSReorganise(key_space_t* ks)
-{
-	if (!ks)
-		return;
-
-	ks_elem_t* ptr = ks->data;
-	while (ptr)
-	{
-		while (ptr->node && ptr->node->next)
-			ptr->node = _remove_node(ptr->node);
-
-		ptr = ptr->next;
-	}
-}
-
 key_space_t KSFind(const key_space_t* ks, key_t key, const release_t release)
 {
 	key_space_t res = { NULL, ks->file };
