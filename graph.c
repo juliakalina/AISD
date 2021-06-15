@@ -52,11 +52,10 @@ int add_edge(Vertex** list, int x1, int x2, int y1, int y2, int weight) {
 	Vertex* vertex_2;
 	vertex_1 = is_vertex(list, x1, y1);
 	vertex_2 = is_vertex(list, x2, y2);
-	//проверка
+	//ГЇГ°Г®ГўГҐГ°ГЄГ 
 	if (!vertex_1 || !vertex_2) {
 		return 2;
 	}
-	//закинуть потом в мейн
 	search = vertex_1->vert_list;
 	if (search) {
 		while (search && (search->vertex->coords.x != x2 && search->vertex->coords.y != y2)) {
@@ -67,7 +66,7 @@ int add_edge(Vertex** list, int x1, int x2, int y1, int y2, int weight) {
 		return 3;
 	}
 	Vertex_list* a_vert_1 = (Vertex_list*)calloc(1, sizeof(Vertex_list));
-	//добавляем связь только к первой вершине, тк орграф
+	//Г¤Г®ГЎГ ГўГ«ГїГҐГ¬ Г±ГўГїГ§Гј ГІГ®Г«ГјГЄГ® ГЄ ГЇГҐГ°ГўГ®Г© ГўГҐГ°ГёГЁГ­ГҐ, ГІГЄ Г®Г°ГЈГ°Г Гґ
 	if (!a_vert_1) {
 		free(a_vert_1);
 		return 1;
