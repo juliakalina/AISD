@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include "keyspace.h"
+#include "keyspace (1).h"
 
 #include <stdlib.h>
 #include <string.h>
@@ -9,7 +9,7 @@
 
 ks_elem_t* _create_elem(const key_t key)
 {
-	ks_elem_t* elem = (ks_elem_t*)calloc(1LLU, sizeof(ks_elem_t));
+	ks_elem_t* elem = (ks_elem_t*)calloc(1, sizeof(ks_elem_t));
 	if (!elem)
 		return elem;
 
@@ -20,7 +20,7 @@ ks_elem_t* _create_elem(const key_t key)
 
 node_t* _create_node(const long info_offset, const release_t release)
 {
-	node_t* node = (node_t*)calloc(1LLU, sizeof(node_t));
+	node_t* node = (node_t*)calloc(1, sizeof(node_t));
 	if (!node)
 		return NULL;
 	
@@ -61,11 +61,11 @@ info_t _load_info(FILE* file, const long offset)
 		return res;
 
 	assert(!fseek(file, offset, SEEK_SET));
-	assert(1LLU == fread(&res.x, sizeof(float), 1LLU, file));
-	assert(1LLU == fread(&res.y, sizeof(float), 1LLU, file));
+	assert(1LLU == fread(&res.x, sizeof(float), 1, file));
+	assert(1LLU == fread(&res.y, sizeof(float), 1, file));
 
-	int length = 0;
-	assert(1LLU == fread(&length, sizeof(size_t), 1LLU, file));
+	size_t length = 0;
+	assert(1LLU == fread(&length, sizeof(size_t), 1, file));
 
 	res.msg = (char*)calloc(length + 1, sizeof(char));
 	if (!res.msg)
@@ -81,11 +81,11 @@ long _save_info(FILE* file, info_t info)
 	fseek(file, 0L, SEEK_END);
 	long offset = ftell(file);
 
-	assert(1LLU == fwrite(&info.x, sizeof(float), 1LLU, file));
-	assert(1LLU == fwrite(&info.y, sizeof(float), 1LLU, file));
+	assert(1LLU == fwrite(&info.x, sizeof(float), 1, file));
+	assert(1LLU == fwrite(&info.y, sizeof(float), 1, file));
 
-	int length = strlen(info.msg);
-	assert(1LLU == fwrite(&length, sizeof(size_t), 1LLU, file));
+	size_t length = strlen(info.msg);
+	assert(1LLU == fwrite(&length, sizeof(size_t), 1, file));
 	assert(length == fwrite(info.msg, sizeof(char), length, file));
 
 	fflush(file);
@@ -102,7 +102,7 @@ bool _ks_add(key_space_t* ks, key_t key, const info_t info, const release_t rele
 
 	key %= MSIZE;
 
-	int count = 0U;
+	unsigned count = 0;
 	ks_elem_t* ptr = ks->data;
 	while (ptr)
 	{
@@ -299,21 +299,21 @@ void KSLoad(key_space_t* ks)
 	if (!ks || !ks->file)
 		return;
 
-	fseek(ks->file, 0L, SEEK_SET);
+	fseek(ks->file, 0, SEEK_SET);
 
-	int elements_num = 0U;
-	fread(&elements_num, sizeof(int), 1LLU, ks->file);
-	for (int i = 0; i < elements_num; ++i)
+	unsigned elements_num = 0;
+	fread(&elements_num, sizeof(unsigned), 1, ks->file);
+	for (unsigned i = 0; i < elements_num; ++i)
 	{
 		key_t key;
 		fread(&key, sizeof(key_t), 1LLU, ks->file);
 
-		int nodes_num = 0U;
-		fread(&nodes_num, sizeof(int), 1LLU, ks->file);
-		for (int j = 0; j < nodes_num; ++j)
+		unsigned nodes_num = 0;
+		fread(&nodes_num, sizeof(unsigned), 1, ks->file);
+		for (size_t j = 0; j < nodes_num; ++j)
 		{
-			long info_offset = 0L;
-			fread(&info_offset, sizeof(long), 1LLU, ks->file);
+			long info_offset = 0;
+			fread(&info_offset, sizeof(long), 1, ks->file);
 
 			long file_offset = ftell(ks->file);
 			KSAdd(ks, key, _load_info(ks->file, info_offset));
@@ -327,34 +327,34 @@ void KSSave(key_space_t* ks)
 	if (!ks || !ks->file)
 		return;
 
-	fseek(ks->file, 0L, SEEK_SET);
-	int elements_num = 0U;
+	fseek(ks->file, 0, SEEK_SET);
+	unsigned elements_num = 0;
 	ks_elem_t* elem = ks->data;
 	while (elem)
 	{
 		++elements_num;
 		elem = elem->next;
 	}
-	fwrite(&elements_num, sizeof(int), 1LLU, ks->file);
+	fwrite(&elements_num, sizeof(unsigned), 1, ks->file);
 
 	elem = ks->data;
 	while (elem)
 	{
-		fwrite(&elem->key, sizeof(key_t), 1LLU, ks->file);
+		fwrite(&elem->key, sizeof(key_t), 1, ks->file);
 
-		int nodes_num = 0;
+		unsigned nodes_num = 0;
 		node_t* node_ptr = elem->node;
 		while (node_ptr)
 		{
 			++nodes_num;
 			node_ptr = node_ptr->next;
 		}
-		fwrite(&nodes_num, sizeof(int), 1LLU, ks->file);
+		fwrite(&nodes_num, sizeof(unsigned), 1, ks->file);
 
 		node_ptr = elem->node;
 		while (node_ptr)
 		{
-			fwrite(&node_ptr->info_offset, sizeof(long), 1LLU, ks->file);
+			fwrite(&node_ptr->info_offset, sizeof(long), 1, ks->file);
 			node_ptr = node_ptr->next;
 		}
 
