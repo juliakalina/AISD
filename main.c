@@ -100,11 +100,8 @@ const int MSGS_SIZE = sizeof(MSGS) / sizeof(MSGS[0]);
 			Dijkstra_SHELL(Graph);
 			break;
 		case 8:
-			//start_dfs = clock();
 			init_dfs(Graph);
 			DFS_SHELL(Graph);
-			//end_dfs = clock();
-			//printf("\n==7== Search time: %.12fs\n", (end_dfs - start_dfs) / (double)CLOCKS_PER_SEC);
 			break;
 		}
 	} while (c != 0);
