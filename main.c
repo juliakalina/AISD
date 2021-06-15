@@ -4,7 +4,7 @@
 
 
 char* error;
-const char* MSGS[] = { "0.End","1.Add", "2.Find",  "3.Remove", "4.Reorginise" ,"5.Print" };
+const char* MSGS[] = { "0.End","1.Add", "2.Find",  "3.Remove", "4.Print" };
 const int MSGS_SIZE = sizeof(MSGS) / sizeof(MSGS[0]);
 
 int MSIZE = 5;
@@ -48,12 +48,13 @@ int main()
             break;
         case 2:
             _find(&ks);
+		break;
         case 3:
             _remove(&ks);
+		break;
         case 4:
-			_reorganise(&ks);
-        case 5:
 			_print(&ks);
+			break;
         }
     } while (c != 0);
 
