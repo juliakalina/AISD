@@ -101,6 +101,15 @@ void TableRemoveByKey2(Table* table, int key)
 	KS2Delete(&res);
 }
 
+KeySpace1 TableFindByKey1(Table* table, char* key, int release) 
+{ 
+	return KS1Find(&table->ks1, key, release);
+}
+
+KeySpace2 TableFindByKey2(Table* table, int key, int release) {
+	return KS2Find(&table->ks2, key, release); 
+}
+
 void TableRemoveByComplKey(Table* table, char* key1, int key2)
 {
 	for (int i = 0; i < SPACE_SIZE; ++i)
