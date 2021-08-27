@@ -3,7 +3,7 @@
 
 #include "Table.h"
 
-int dialog(const char* msgs[], int n);
+int dialog(char* msgs[], int n);
 
 void CLIAdd(Table* table); 
 void CLIFind(Table* table);
