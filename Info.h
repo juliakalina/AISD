@@ -10,9 +10,9 @@ typedef struct Info
 	char* msg;
 } Info;
 
-Info LoadInfo(FILE* file, const long offset);
-long SaveInfo(FILE* file, const Info* info);
-void PrintInfo(FILE* file, const long offset);
+Info LoadInfo(FILE* file, long offset);
+long SaveInfo(FILE* file, Info* info);
+void PrintInfo(FILE* file, long offset);
 void DeleteInfo(Info* info);
 
 #endif /* !__INFO_H_INCLUDED__ */
