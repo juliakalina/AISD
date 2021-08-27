@@ -14,7 +14,7 @@ enum BusyType
 
 typedef struct KS2Elem
 {
-	int busy; //признак занятости элемента
+	int busy; //ДЏД‘ДЌГ§Г­Е•Д™ Г§Е•Г­Л™Е€Г®Е„Е€ДЌ ГЅГ«ДєД›ДєГ­Е€Е•
 	int key;
 	int release;
 	Item* item;
@@ -29,7 +29,7 @@ typedef struct KeySpace2
 void KS2Init(KeySpace2* ks2);
 bool KS2Add(KeySpace2* ks2, Item* item);
 bool KS2Remove(KeySpace2* ks2, int key, int release);
-KeySpace2 KS2Find(const KeySpace2* ks2, int key, int release);
+KeySpace2 KS2Find(KeySpace2* ks2, int key, int release);
 void KS2Print(FILE* file, KeySpace2* ks2);
 void KS2RemoveAt(KeySpace2* ks2, int idx);
 void KS2Delete(KeySpace2* ks2);
