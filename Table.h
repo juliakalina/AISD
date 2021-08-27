@@ -11,7 +11,7 @@ typedef struct Table
 	FILE* file;
 } Table;
 
-int InitTable(Table* table, const char* filename);
+int InitTable(Table* table, char* filename);
 void DeleteTable(Table* table);
 
 void TableAddElement(Table* table, Item* item, Info* info);
@@ -21,8 +21,8 @@ void TableRemoveByKey1(Table* table, char* key);
 void TableRemoveByKey2(Table* table, int key);
 void TableRemoveByComplKey(Table* table, char* key1, int key2);
 
-inline KeySpace1 TableFindByKey1(Table* table, char* key, int release) { return KS1Find(&table->ks1, key, release); }
-inline KeySpace2 TableFindByKey2(Table* table, int key, int release) { return KS2Find(&table->ks2, key, release); }
+KeySpace1 TableFindByKey1(Table* table, char* key, int release):
+KeySpace2 TableFindByKey2(Table* table, int key, int release);
 Item* TableFindByComplKey(Table* table, char* key1, int key2);
 
 bool TableCheckComplKey(Table* table, char* key1, int key2);
