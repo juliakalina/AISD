@@ -157,7 +157,7 @@ void TableLoad(Table* table)
 		return;
 
 	fseek(table->file, 0, SEEK_SET);
-	for (int i = 0; i < (int)SPACE_SIZE; ++i)
+	for (int i = 0; i < SPACE_SIZE; ++i)
 	{
 		int key2;
 		fread(&key2, sizeof(int), 1, table->file);
