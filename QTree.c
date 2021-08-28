@@ -347,49 +347,6 @@ void _QTreePrint(QNode* node)
 	_QTreePrint((QNode*)node->se);
 }
 
-/*void _QTreePrintTree(QNode* node, char* prefix, char* children_prefix)
-{
-	if (!node)
-		return;
-
-	 int prefix_len = strlen(prefix);
-	if (!node->nw && prefix_len)
-		printf("%.*s+=== ", (int)(prefix_len - 4), prefix);
-	else
-		printf("%s", prefix);
-
-	printf("{%d;%d;%d;%d}\n", node->bound.x - node->bound.hw, node->bound.y - node->bound.hh, 2 * node->bound.hw, 2 * node->bound.hh);
-
-	if (!node->nw)
-		return;
-
-	int size = strlen(children_prefix);
-	char* prefix_buf = (char*)calloc(size + 5, sizeof(char));
-	if (!prefix_buf)
-		return;
-
-	strcpy(prefix_buf, children_prefix);
-	strcpy(prefix_buf + size, "+-- ");
-
-	char* children_prefix_buf = (char*)calloc(size + 5, sizeof(char));
-	if (!children_prefix_buf)
-	{
-		free(prefix_buf);
- 
-		return;
-	}
-
-	strcpy(children_prefix_buf, children_prefix);
-	strcpy(children_prefix_buf + size, "|   ");
-
-	_QTreePrintTree(node->nw, prefix_buf, children_prefix_buf);
-	_QTreePrintTree(node->ne, prefix_buf, children_prefix_buf);
-	_QTreePrintTree(node->sw, prefix_buf, children_prefix_buf);
-	_QTreePrintTree(node->se, prefix_buf, children_prefix_buf);
-
-	free(prefix_buf);
-	free(children_prefix_buf);
-}*/
 
 bool QTreeCreate(QTree** tree, Bound bound, int max_node_num)
 {
