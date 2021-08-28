@@ -421,14 +421,6 @@ void QTreePrint(QTree* tree)
 	_QTreePrint(tree->root);
 }
 
-void QTreePrintTree(QTree* tree)
-{
-	if (!tree || !tree->root)
-		return;
-
-	_QTreePrintTree(tree->root, "", "");
-}
-
 bool QTreeLoad(QTree** tree, char* filename)
 {
 	if (!tree)
