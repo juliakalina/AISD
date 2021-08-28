@@ -106,7 +106,3 @@ void CLIPrint(QTree* tree)
 	QTreePrint(tree);
 }
 
-void CLIPrintTree(QTree* tree)
-{
-	QTreePrintTree(tree);
-}
