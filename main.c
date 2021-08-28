@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 
-const char* MSGS[] = { "0.Exit", "1.Add", "2.Remove", "3.Find", "4.Print", "5.Print tree" };
+const char* MSGS[] = { "0.Exit", "1.Add", "2.Remove", "3.Find", "4.Print" };
 const int MSGS_SIZE = sizeof(MSGS) / sizeof(MSGS[0]);
 
 int main()
@@ -36,8 +36,6 @@ int main()
             case 3: CLIFind(tree);      
                 break;
             case 4: CLIPrint(tree);     
-                break;
-            case 5: CLIPrintTree(tree); 
                 break;
         }
     } while (opt);
