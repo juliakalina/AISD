@@ -18,7 +18,7 @@ void DeallocateList(node_t* head)
 	head = NULL;
 }
 
-node_t* AddNextNode(node_t* cur)//добавление след нода
+node_t* AddNextNode(node_t* cur)//Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ Г±Г«ГҐГ¤ Г­Г®Г¤Г 
 {
 	cur->next = (node_t*)calloc(1, sizeof(node_t));
 	if (!cur->next)
@@ -27,7 +27,7 @@ node_t* AddNextNode(node_t* cur)//добавление след нода
 	return cur->next;
 }
 
-void InsertNode(node_t* cur, _node_elem_t val)//вставка в нод
+void InsertNode(node_t* cur, _node_elem_t val)//ГўГ±ГІГ ГўГЄГ  Гў Г­Г®Г¤
 {
 	node_t* next = cur->next;
 	node_t* ptr = AddNextNode(cur);
