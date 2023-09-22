@@ -1,4 +1,4 @@
-#MEPhI course: Algorithms and data structures
+### **MEPhI course "Algorithms and data structures"**
 
 Lab 1:
 working with matrices
