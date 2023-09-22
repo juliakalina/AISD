@@ -6,10 +6,10 @@ working with matrices
 Lab 2:
 working with a queue
 
-Lab3:
+Lab 3:
 working with a table that uses two keyspaces
 
-Lab4:
+Lab 4:
 working with a tree
 
 Lab 5:
